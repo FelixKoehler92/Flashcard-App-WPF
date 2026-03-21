@@ -18,10 +18,13 @@ This app helps users learn efficiently using a custom Spaced Repetition algorith
 
 ## 📸 Screenshots
 
-*(Füge hier per Drag & Drop ein Bild von deinem Dashboard ein)*
+<img width="1917" height="1002" alt="image" src="https://github.com/user-attachments/assets/d7cc98e8-ebd7-4290-a4e0-e9ef53db5a89" />
+
 > **Dashboard:** Übersicht der Statistiken und Schnellzugriff auf alle Funktionen.
 
-*(Füge hier per Drag & Drop ein Bild von deinem Lern-Fenster ein)*
+
+<img width="629" height="552" alt="image" src="https://github.com/user-attachments/assets/792feee9-9e84-4463-b4ab-3a0e0fcee2fc" />
+
 > **Learning Session:** Fokus-Modus beim Lernen mit intelligentem Auto-Resize für lange Antworten.
 
 ---
@@ -73,5 +76,4 @@ Dieses Projekt wurde schrittweise von Grund auf entwickelt. Hier ist der chronol
 ## 💻 How to run locally
 
 1. Clone this repository:
-   ```bash
-   git clone [HIER DEN LINK ZU DEINEM GITHUB REPO EINFÜGEN]
+   https://github.com/FelixKoehler92/Flashcard-App-WPF.git
