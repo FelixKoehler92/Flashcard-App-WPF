@@ -77,3 +77,7 @@ Dieses Projekt wurde schrittweise von Grund auf entwickelt. Hier ist der chronol
 
 1. Clone this repository:
    https://github.com/FelixKoehler92/Flashcard-App-WPF.git
+2. Open the .sln file in Visual Studio.
+3. Visual Studio will automatically restore the required NuGet packages (Entity Framework Core, SQLite).
+4. Run the application (F5).
+5. Note: The SQLite database (flashcards.db) will be automatically generated locally upon the first launch thanks to EnsureCreated().
