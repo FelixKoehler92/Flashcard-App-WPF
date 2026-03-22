@@ -72,5 +72,11 @@ namespace FlashcardGUI
             manageWindow.ShowDialog();
             UpdateDashboard();
         }
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Owner = this;
+            aboutWindow.ShowDialog();
+        }
     }
 }

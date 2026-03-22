@@ -14,7 +14,7 @@ namespace FlashcardGUI
         private int _currentIndex = 0;
         private int _correctCount = 0;
 
-        // Mert wie viele Karten es GANZ AM ANFANG der Session waren
+        // Merkt wie viele Karten es GANZ AM ANFANG der Session waren
         private int _initialSessionCount = 0;
 
         public LearnWindow(FlashcardManager manager, int amount, string category)

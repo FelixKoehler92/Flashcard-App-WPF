@@ -5,6 +5,104 @@
         WindowStartupLocation="CenterOwner"
         Background="#1E1E1E">
 
+    <Window.Resources>
+        <!-- Moderner grauer Button (Show Answer) -->
+        <Style TargetType="Button" x:Key="ModernMenuButton">
+            <Setter Property="Background" Value="#55555A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#6D6D72"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3E3E42"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner roter Button (Hard) -->
+        <Style TargetType="Button" x:Key="ModernDangerButton">
+            <Setter Property="Background" Value="#D32F2F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#EF5350"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#C62828"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner oranger Button (Medium) -->
+        <Style TargetType="Button" x:Key="ModernWarningButton">
+            <Setter Property="Background" Value="#F57C00"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF9800"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#E65100"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner grüner Button (Easy) -->
+        <Style TargetType="Button" x:Key="ModernSuccessButton">
+            <Setter Property="Background" Value="#388E3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4CAF50"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#2E7D32"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -53,18 +151,18 @@
         <Grid Grid.Row="2" Height="50">
 
             <Button x:Name="BtnShowAnswer" Content="Show Answer" Click="BtnShowAnswer_Click"
-                    Background="#55555A" Foreground="White" FontSize="18" FontWeight="Bold" 
-                    BorderThickness="0" Cursor="Hand" Visibility="Visible"/>
+                    Style="{StaticResource ModernMenuButton}" FontSize="18" FontWeight="Bold" 
+                    Visibility="Visible"/>
 
             <StackPanel x:Name="RatingButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
                 <Button Content="Hard (1)" Click="BtnRate_Click" Tag="1" Width="120" Margin="10,0"
-                        Background="#D32F2F" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        Style="{StaticResource ModernDangerButton}" FontSize="16" FontWeight="Bold"/>
 
                 <Button Content="Medium (2)" Click="BtnRate_Click" Tag="2" Width="120" Margin="10,0"
-                        Background="#F57C00" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        Style="{StaticResource ModernWarningButton}" FontSize="16" FontWeight="Bold"/>
 
                 <Button Content="Easy (3)" Click="BtnRate_Click" Tag="3" Width="120" Margin="10,0"
-                        Background="#388E3C" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        Style="{StaticResource ModernSuccessButton}" FontSize="16" FontWeight="Bold"/>
             </StackPanel>
 
         </Grid>

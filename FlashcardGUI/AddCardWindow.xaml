@@ -6,6 +6,7 @@
         Background="#1E1E1E">
 
     <Window.Resources>
+        <!-- Style für Dropdown (bereits vorhanden) -->
         <Style TargetType="ComboBox" x:Key="DarkCombo">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="#2D2D30" />
@@ -24,12 +25,10 @@
                                     </ControlTemplate>
                                 </ToggleButton.Template>
                             </ToggleButton>
-
                             <ContentPresenter IsHitTestVisible="False" Margin="8,5,25,5" VerticalAlignment="Center" HorizontalAlignment="Left"
                                               Content="{TemplateBinding SelectionBoxItem}" 
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
                                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" />
-
                             <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
                                 <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border x:Name="DropDownBorder" Background="#2D2D30" BorderThickness="1" BorderBrush="#55555A"/>
@@ -55,6 +54,100 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Moderner blauer Button (+) -->
+        <Style TargetType="Button" x:Key="ModernPrimaryButton">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1C97EA"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#005A9E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner grüner Button (Save Cat.) -->
+        <Style TargetType="Button" x:Key="ModernSuccessButton">
+            <Setter Property="Background" Value="#388E3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4CAF50"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#2E7D32"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner transparenter Button (Cancel) -->
+        <Style TargetType="Button" x:Key="ModernGhostButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#A0A0A0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#2D2D30"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Moderner grauer Button (Save Card) -->
+        <Style TargetType="Button" x:Key="ModernMenuButton">
+            <Setter Property="Background" Value="#55555A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#6D6D72"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3E3E42"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <!-- Der ScrollViewer schützt vor zu langen Texten -->
@@ -77,12 +170,13 @@
                           DisplayMemberPath="Name" SelectedValuePath="Name"/>
 
                 <Button Content="+" Grid.Column="1" Click="BtnToggleNewCategory_Click" Width="35" Margin="10,0,0,0" 
-                        Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" FontSize="16" FontWeight="Bold"/>
+                        Style="{StaticResource ModernPrimaryButton}" FontSize="16" FontWeight="Bold"/>
             </Grid>
 
             <StackPanel x:Name="PanelNewCategory" Visibility="Collapsed" Margin="0,0,0,15" Orientation="Horizontal">
                 <TextBox x:Name="TxtNewCategory" Width="220" Background="#2D2D30" Foreground="White" BorderBrush="#007ACC" BorderThickness="1" Padding="5"/>
-                <Button Content="Save Cat." Click="BtnSaveCategory_Click" Width="75" Margin="10,0,0,0" Background="#388E3C" Foreground="White" BorderThickness="0" Cursor="Hand"/>
+                <Button Content="Save Cat." Click="BtnSaveCategory_Click" Width="75" Margin="10,0,0,0" 
+                        Style="{StaticResource ModernSuccessButton}"/>
             </StackPanel>
 
             <TextBlock Text="Question:" Foreground="#A0A0A0" Margin="0,0,0,5"/>
@@ -94,13 +188,13 @@
                      BorderThickness="0" Padding="10,8" Margin="0,0,0,25" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Cancel" Click="BtnCancel_Click" 
-                        Background="Transparent" Foreground="#A0A0A0" BorderThickness="0" 
-                        Padding="15,8" Margin="0,0,10,0" Cursor="Hand"/>
+                <!-- Cancel Button -->
+                <Button Content="Cancel" Click="BtnCancel_Click" Padding="15,8" Margin="0,0,10,0" 
+                        Style="{StaticResource ModernGhostButton}"/>
 
-                <Button Content="Save Card" Click="BtnSave_Click" 
-                        Background="#55555A" Foreground="White" BorderThickness="0" 
-                        Padding="20,8" FontWeight="Bold" Cursor="Hand"/>
+                <!-- Save Card Button -->
+                <Button Content="Save Card" Click="BtnSave_Click" Padding="20,8" FontWeight="Bold" 
+                        Style="{StaticResource ModernMenuButton}"/>
             </StackPanel>
 
         </StackPanel>
